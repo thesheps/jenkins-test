@@ -1,5 +1,8 @@
 node {
-    def common = load "common.groovy"
-    common.deploy("dev")
-    common.promote("int")
+    checkout scm
+
+    def pipeline = load "pipeline.groovy"
+
+    pipeline.deploy("dev")
+    pipeline.promote("int")
 }

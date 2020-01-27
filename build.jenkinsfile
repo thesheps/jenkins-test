@@ -1,9 +1,11 @@
 node {
-    def common = load "common.groovy"
+    checkout scm
+
+    def pipeline = load "pipeline.groovy"
 
     stage("Build") {
         sh "echo 'Building...'"
     }
 
-    common.promote("dev")
+    pipeline.promote("dev")
 }
