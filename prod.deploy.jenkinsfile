@@ -2,6 +2,5 @@ node {
     checkout scm
 
     def pipeline = load "pipeline.groovy"
-    pipeline.deploy("dev")
-    pipeline.promote("int")
+    pipeline.deploy("prod")
 }
