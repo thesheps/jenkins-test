@@ -1,25 +1,13 @@
 node {
-    agent any
+    stage("Deploy to UAT") {
+        sh "echo 'Deploying to UAT...'"
+    }
 
-    stages {
-        stage("Deploy to UAT") {
-            steps {
-                sh "echo 'Deploying to UAT...'"
-            }
-        }
+    stage("Promote to Prod") {
+        input("Proceed to Prod?")
+    }
 
-        stage("Promote to Prod") {
-            steps {
-                script {
-                    input("Proceed to Prod?")
-                }
-            }
-        }
-
-        stage("Deploy") {
-            steps {
-                build(job: 'prod-deploy/master', wait: false)
-            }
-        }
+    stage("Deploy") {
+        build(job: 'prod-deploy/master', wait: false)
     }
 }

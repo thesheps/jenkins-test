@@ -1,11 +1,5 @@
 node {
-    agent any
-
-    stages {
-        stage("Deploy to Prod") {
-            steps {
-                sh "echo 'Deploying to Prod...'"
-            }
-        }
+    stage("Deploy to Prod") {
+        sh "echo 'Deploying to Prod...'"
     }
 }
