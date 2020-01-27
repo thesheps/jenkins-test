@@ -1,4 +1,4 @@
-def deploy (env) {
+def deploy(env) {
     stage("Deploy to ${env}") {
         sh "echo 'DEPLOYING TO ${env}, YO!'"
     }
