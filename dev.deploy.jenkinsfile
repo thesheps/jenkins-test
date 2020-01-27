@@ -18,7 +18,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                build 'int-deploy/master'
+                build(job: 'int-deploy/master', propagate: false)
             }
         }
     }

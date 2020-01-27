@@ -18,7 +18,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                build 'uat-deploy/master'
+                build(job: 'uat-deploy/master', propagate: false)
             }
         }
     }
