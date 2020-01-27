@@ -1,6 +1,6 @@
 pipeline {
     stages {
-        stage {
+        stage "Build" {
             step {
                 sh "Building..."
             }
