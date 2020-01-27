@@ -1,7 +1,8 @@
 node {
-    stage("Deploy to Dev") {
-        sh "echo 'Deploying to Dev...'"
-    }
+    checkout scm
+    def common = load "common.groovy"
+    
+    common.deploy("Dev")
 
     stage("Promote to Int") {
         input("Proceed to Int?")
