@@ -1,0 +1,11 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Deploy to Prod") {
+            steps {
+                sh "echo 'Deploying to Prod...'"
+            }
+        }
+    }
+}

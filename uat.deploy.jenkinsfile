@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Deploy to UAT") {
+            steps {
+                sh "echo 'Deploying to UAT...'"
+            }
+        }
+
+        stage("Promote to Prod") {
+            steps {
+                script {
+                    input("Proceed to Prod?")
+                }
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                build 'prod-deploy/master'
+            }
+        }
+    }
+}
