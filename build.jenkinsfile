@@ -10,7 +10,7 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                build(job: 'dev-deploy/master', propagate: false)
+                build(job: 'dev-deploy/master', wait: false)
             }
         }
     }
