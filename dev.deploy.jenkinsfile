@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Deploy to Dev") {
+            steps {
+                sh "echo 'Deploying to Dev'"
+            }
+        }
+
+        stage("Promote to Int") {
+            steps {
+                script {
+                    input("Promote to Int?")
+                }
+            }
+        }
+    }
+}
