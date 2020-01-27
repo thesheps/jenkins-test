@@ -1,9 +1,9 @@
 node {
+    def common = load "common.groovy"
+
     stage("Build") {
         sh "echo 'Building...'"
     }
 
-    stage("Deploy") {
-        build(job: 'dev-deploy/master', wait: false)
-    }
+    common.promote("dev")
 }

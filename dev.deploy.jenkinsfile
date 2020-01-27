@@ -1,14 +1,5 @@
 node {
-    checkout scm
     def common = load "common.groovy"
-    
-    common.deploy("Dev")
-
-    stage("Promote to Int") {
-        input("Proceed to Int?")
-    }
-
-    stage("Deploy") {
-        build(job: 'int-deploy/master', wait: false)
-    }
+    common.deploy("dev")
+    common.promote("int")
 }
