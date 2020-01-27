@@ -1,25 +1,13 @@
 node {
-    agent any
+    stage("Deploy to Dev") {
+        sh "echo 'Deploying to Dev...'"
+    }
 
-    stages {
-        stage("Deploy to Dev") {
-            steps {
-                sh "echo 'Deploying to Dev...'"
-            }
-        }
+    stage("Promote to Int") {
+        input("Proceed to Int?")
+    }
 
-        stage("Promote to Int") {
-            steps {
-                script {
-                    input("Proceed to Int?")
-                }
-            }
-        }
-
-        stage("Deploy") {
-            steps {
-                build(job: 'int-deploy/master', wait: false)
-            }
-        }
+    stage("Deploy") {
+        build(job: 'int-deploy/master', wait: false)
     }
 }

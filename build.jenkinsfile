@@ -1,13 +1,9 @@
 node {
     stage("Build") {
-        steps {
-            sh "echo 'Building...'"
-        }
+        sh "echo 'Building...'"
     }
 
     stage("Deploy") {
-        steps {
-            build(job: 'dev-deploy/master', wait: false)
-        }
+        build(job: 'dev-deploy/master', wait: false)
     }
 }
