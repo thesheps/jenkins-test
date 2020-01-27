@@ -2,23 +2,23 @@ pipeline {
     agent any
 
     stages {
-        stage("Deploy to Dev") {
+        stage("Deploy to Int") {
             steps {
-                sh "echo 'Deploying to Dev...'"
+                sh "echo 'Deploying to Int...'"
             }
         }
 
-        stage("Promote to Int") {
+        stage("Promote to UAT") {
             steps {
                 script {
-                    input("Proceed to Int?")
+                    input("Proceed to UAT?")
                 }
             }
         }
 
         stage("Deploy") {
             steps {
-                build 'int-deploy/master'
+                build 'uat-deploy/master'
             }
         }
     }
